@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Projects</title>
+    <style>
+        body{
+            font-family:Arial
+
+        }
+
+
+        .subscribe-button{
+            border: none;
+            background-color: black;
+            color: white;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-right: 15px;
+            padding-left: 15px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+        .is-subscribe{
+            background-color: rgb(240,240,240);
+            color: black;
+        }
+
+
+        .cost-input{
+            font-size: 15px;
+            /* padding-top: 10px;
+            padding-bottom: 10px;
+            padding-right: 10px;
+            padding-left: 10px; */
+            padding:10px
+        }
+
+        .calculate-button{
+            background-color: green;
+            color: white;
+            border: none;
+            font-size: 15px;
+            padding: 12px 15px;
+            cursor: pointer;
+            
+        }
+    </style>
+  </head>
+  <body>
+    <p>Youtube Subscribe Button</p>
+    <button onclick="
+      Subscribe();
+    " class="JS_subscribe_button subscribe-button">Subscribe</button>
+
+    <p>Amazon Shipping Calculator</p>
+    <input placeholder="Cost of order" class="JS_cost_input cost-input" onkeydown="
+        console.log(event.key)
+        if (event.key == 'Enter') {
+            CalculateTotal();
+        }
+    ">
+    <button onclick="
+      CalculateTotal();
+    " class = "calculate-button">Calculate</button>
+
+    <p class = "JS_total_cost"></p>
+
+    <script>
+      function Subscribe(){
+        const buttonElement = document.querySelector('.JS_subscribe_button');
+        if (buttonElement.innerText == 'Subscribe') {
+            buttonElement.innerText = 'Subscribed';
+            buttonElement.classList.add('is-subscribe');
+        }
+        else {
+            buttonElement.innerText = 'Subscribe';
+            buttonElement.classList.remove('is-subscribe');
+        }
+      }
+
+      function CalculateTotal(){
+        const inputElement = document.querySelector('.JS_cost_input');
+        let cost = Number(inputElement.value);
+        if (cost <40){
+            cost += 10;
+            document.querySelector('.JS_total_cost')
+                .innerHTML = `$${cost}`;
+        }else{
+            document.querySelector('.JS_total_cost')
+                .innerHTML = `$${cost}`;
+        }
+      }
+    </script>
+  </body>
+</html>
+
